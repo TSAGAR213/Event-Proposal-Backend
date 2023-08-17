@@ -109,6 +109,20 @@ router.get("/getproposal", (req, res) => {
     });
 });
 
+
+router.get("/getvendorproposal",Verifying,(req, res) => {
+  
+  propmodel
+    .find({"Vendor_id":(`${req.vendorid}`)})
+    .then((data) => {
+      res.json({ data });
+    })
+    .catch((e) => {
+      res.json({ message: e.message });
+    });
+});
+
+
 router.get("/getproposal/:id", (req, res) => {
   propmodel
     .findById(req.params["id"])
